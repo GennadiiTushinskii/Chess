@@ -41,7 +41,7 @@ public class ChessBoard {
                     System.out.print(board[i][j].getSymbol() + board[i][j].getColor().substring(0, 1).toLowerCase() + "\t");
                 }
             }
-            System.out.println();
+            //System.out.println();
             System.out.println();
         }
         System.out.println("Player 1(White)");
