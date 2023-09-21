@@ -11,7 +11,7 @@ public class Horse extends ChessPiece{
     public boolean checkTrue(int toLine, int toColumn){
         if((toLine >= 0 && toColumn >= 0) && (toLine <= 7 && toColumn <= 7))//если новые координаты в пределах поля доски то можно ходить
             return true;
-        return false;
+        else return false;
     }
 
     @Override
