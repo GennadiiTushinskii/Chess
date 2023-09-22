@@ -8,7 +8,7 @@ public class Queen extends ChessPiece{
         return color;
     }
 
-    public boolean checkTrue(int toLine, int toColumn){
+    public boolean checkMove(int toLine, int toColumn){
         if((toLine >= 0 && toColumn >= 0) && (toLine <= 7 && toColumn <= 7))//если новые координаты в пределах поля доски то можно ходить
             return true;
         return false;
@@ -27,10 +27,10 @@ public class Queen extends ChessPiece{
 
     @Override
     public boolean canMoveToPosition(ChessBoard chessBoard, int line, int column, int toLine, int toColumn) {
-        if (toLine < 0 || toColumn < 0 || toLine > 7  || toColumn > 7) return false;//если выходим за пределы поля то возврат ошибка false
+//        if (toLine < 0 || toColumn < 0 || toLine > 7  || toColumn > 7) return false;//если выходим за пределы поля то возврат ошибка false
         else if (line == toLine && column == toColumn) return false;//если координаты не меняются - остаемся на месте - возврат ошибка false
-        else if (checkTrue(toLine,toColumn) && (checkDiag(line, column, toLine, toColumn))) return true;
-        else if (!checkTrue(toLine, toColumn)) return false;//если выходим за пределы поля то возврат ошибка false
+        else if (checkMove(toLine,toColumn) && (checkDiag(line, column, toLine, toColumn))) return true;
+        else if (!checkMove(toLine, toColumn)) return false;//если выходим за пределы поля то возврат ошибка false
         else if (checkRook(line, column, toLine, toColumn)) return true;
         else return false;
     }
