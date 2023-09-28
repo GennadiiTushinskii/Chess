@@ -17,6 +17,7 @@ public class Horse extends ChessPiece{
     @Override
     public boolean canMoveToPosition(ChessBoard chessBoard, int line, int column, int toLine, int toColumn) {
         if (line == toLine && column == toColumn) return false;//если координаты не меняются - остаемся на месте - возврат ошибка
+        else if (chessBoard.board[toLine][toColumn] != null && chessBoard.board[toLine][toColumn].getColor().equals(getColor())) return false;
         else if((checkMove(toLine, toColumn)) && (
                 ((toLine-1 == line) && (toColumn-2 == column))||
                 ((toLine-1 == line) && (toColumn+2 == column))||

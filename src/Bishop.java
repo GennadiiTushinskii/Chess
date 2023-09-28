@@ -23,7 +23,27 @@ public class Bishop extends ChessPiece{
     @Override
     public boolean canMoveToPosition(ChessBoard chessBoard, int line, int column, int toLine, int toColumn) {
         if (line == toLine && column == toColumn) return false;//если координаты не меняются - остаемся на месте - возврат ошибка false
-        else if (checkMove(toLine,toColumn) && (checkDiag(line, column, toLine, toColumn))) return true;
+        if((toLine-line)>0 && (toColumn-column)>0) {
+            for (int i = line, j = column; i < toLine; i++, j++) {
+                if (chessBoard.board[i][j] != null) return false;
+            }
+        }
+        if((toLine-line)<0 && (toColumn-column)<0) {
+            for (int i = line, j = column; i > toLine; i--, j--) {
+                if (chessBoard.board[i][j] != null) return false;
+            }
+        }
+        if((toLine-line)>0 && (toColumn-column)<0) {
+            for (int i = line, j = column; i < toLine; i++, j--) {
+                if (chessBoard.board[i][j] != null) return false;
+            }
+        }
+        if((toLine-line)<0 && (toColumn-column)>0) {
+            for (int i = line, j = column; i > toLine; i--, j++) {
+                if (chessBoard.board[i][j] != null) return false;
+            }
+        }
+        if (checkMove(toLine,toColumn) && (checkDiag(line, column, toLine, toColumn))) return true;
         else return false;
     }
 
