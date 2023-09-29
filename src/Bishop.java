@@ -23,6 +23,7 @@ public class Bishop extends ChessPiece{
     @Override
     public boolean canMoveToPosition(ChessBoard chessBoard, int line, int column, int toLine, int toColumn) {
         if (line == toLine && column == toColumn) return false;//если координаты не меняются - остаемся на месте - возврат ошибка false
+        //проверка движения по всем диагоналям
         if((toLine-line)>0 && (toColumn-column)>0) {
             for (int i = line, j = column; i < toLine; i++, j++) {
                 if (chessBoard.board[i][j] != null) return false;
@@ -43,7 +44,10 @@ public class Bishop extends ChessPiece{
                 if (chessBoard.board[i][j] != null) return false;
             }
         }
-        if (checkMove(toLine,toColumn) && (checkDiag(line, column, toLine, toColumn))) return true;
+
+        //если правильно двигаемся и поле назначения пустое или там находится фигура противника
+        if (checkMove(toLine,toColumn) && (checkDiag(line, column, toLine, toColumn)) &&
+                (chessBoard.board[toLine][toColumn]==null || !chessBoard.board[toLine][toColumn].getColor().equals(getColor()))) return true;
         else return false;
     }
 

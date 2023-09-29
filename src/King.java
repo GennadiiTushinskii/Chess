@@ -46,6 +46,7 @@ public class King extends ChessPiece {
                     (toLine==line-1&&toColumn==column+1)
                 )
         ) return true;//если выходим за пределы поля то возврат ошибка false
+        else if(chessBoard.board[toLine][toColumn]==null || !chessBoard.board[toLine][toColumn].getColor().equals(getColor())) return true;
         else return false;
     }
 
